@@ -37,6 +37,7 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
+    "@mikeljames/efetch": "^1.0.0-rc1",
     "curry": "^1.2.0",
     "url": "^0.11.0"
   }
