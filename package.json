@@ -1,6 +1,6 @@
 {
   "name": "@export-mike/f",
-  "version": "1.0.0",
+  "version": "1.0.0-rc1",
   "description": "a thin wrapper around the fetch api to provide you with a subscribe function to intercept 401 status responses, uses @export-mike/efetch for caching etags",
   "main": "index.js",
   "scripts": {
