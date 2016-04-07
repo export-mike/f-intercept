@@ -1,5 +1,5 @@
 {
-  "name": "@mikeljames/f-intercept",
+  "name": "f-intercept",
   "version": "1.0.0-rc4",
   "description": "a thin wrapper around the fetch api to provide you with a subscribe function to intercept 401 status responses, uses @export-mike/efetch for caching etags",
   "main": "lib/index.js",
