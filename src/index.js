@@ -1,4 +1,4 @@
-import eFetch from '@mikeljames/efetch'
+import eFetch from 'f-etag'
 import curry from 'curry'
 import url from 'url'
 const subscribers = {}
