@@ -2,7 +2,7 @@
 a thin wrapper around fetch api we use the eFetch library to handle basic e-tag caching in memory.
 
 ###Usage:
-  import f, {onUnauth} from 'f-intercept'
+  ```import f, {onUnauth} from 'f-intercept'
 
   const apiFetch = f(BASE_API)
 
@@ -10,4 +10,4 @@ a thin wrapper around fetch api we use the eFetch library to handle basic e-tag 
 
   onUnauth(BASE_API, () => {
     console.log('intercepted 401 unauthorized response')
-  })
+  })```
