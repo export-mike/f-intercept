@@ -1,47 +1,47 @@
-// import eFetch from '@export-mike/efetch';
-import curry from 'curry';
-import url from 'url';
-const subscribers = {};
-const UNAUTH = 401;
+import eFetch from '@mikeljames/efetch'
+import curry from 'curry'
+import url from 'url'
+const subscribers = {}
+const UNAUTH = 401
 
 const intercept = (base, path, options, response) => {
   // interception
   if (response.status && response.status === UNAUTH) {
-    const subscribersForBase = subscribers[base];
+    const subscribersForBase = subscribers[base]
     if (subscribersForBase) {
       try {
-        subscribersForBase.forEach(cb => cb(response.clone()));
+        subscribersForBase.forEach(cb => cb(response.clone()))
       } catch (e) {
         // we dont want this error going up the parent chain in userland as its a different chain
         if (process.NODE_ENV !== 'production') {
-          console.error('Unhandled Exception in onUnauth subscriber', e); // eslint-disable-line
+          console.error('Unhandled Exception in onUnauth subscriber', e) // eslint-disable-line
         }
       }
     }
   }
   // continue promise chain
-  return response;
-};
+  return response
+}
 
 const f = (base, path, options) => {
   return eFetch(url.resolve(base, path), options)
-  .then(curry(intercept)(base, path, options));
-};
+  .then(curry(intercept)(base, path, options))
+}
 
 export const onUnauth = (base, cb) => {
-  let subscribersForBase = subscribers[base];
+  let subscribersForBase = subscribers[base]
 
   if (!subscribersForBase) {
-    subscribers[base] = [cb];
+    subscribers[base] = [ cb ]
   }
 
-  subscribersForBase = subscribers[base];
+  subscribersForBase = subscribers[base]
 
-  subscribersForBase.push(cb);
+  subscribersForBase.push(cb)
 
   return () => {
-    subscribersForBase = subscribersForBase.filter(s => s !== cb);
-  };
-};
+    subscribersForBase = subscribersForBase.filter(s => s !== cb)
+  }
+}
 
-export default curry(f);
+export default curry(f)
