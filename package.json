@@ -21,9 +21,9 @@
   "author": "export-mike <m@mikejam.es>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/export-mike/export-mike-f/issues"
+    "url": "https://github.com/export-mike/f-intercept/issues"
   },
-  "homepage": "https://github.com/export-mike/export-mike-f#readme",
+  "homepage": "https://github.com/export-mike/f-intercept#readme",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.6.5",
