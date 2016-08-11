@@ -37,8 +37,9 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
-    "f-etag": "^1.0.0-rc2",
     "curry": "^1.2.0",
+    "f-etag": "^1.0.0-rc2",
+    "isomorphic-fetch": "^2.2.1",
     "url": "^0.11.0"
   }
 }

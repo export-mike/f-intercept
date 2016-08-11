@@ -1,4 +1,5 @@
 import eFetch from 'f-etag'
+import fetch from 'isomorphic-fetch'
 import curry from 'curry'
 import url from 'url'
 const subscribers = {}
@@ -24,9 +25,15 @@ const intercept = (base, path, options, response) => {
 }
 
 const f = (base, path, options) => {
+  if (typeof(base) === 'object' && !base.etagCaching) {
+    return fetch(url.resolve(base.base, path), options)
+    .then(curry(intercept)(base.base, path, options));
+  }
+
   return eFetch(url.resolve(base, path), options)
-  .then(curry(intercept)(base, path, options))
+  .then(curry(intercept)(base, path, options));
 }
+
 
 export const onUnauth = (base, cb) => {
   let subscribersForBase = subscribers[base]
